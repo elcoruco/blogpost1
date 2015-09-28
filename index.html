@@ -2,6 +2,11 @@
 <html>
 <head>
   <title>Yahoo</title>
+  <style>
+    th, td{
+        border: 1px solid black;
+    }
+  </style>
 </head>
 <body>
 <p>:D</p>
@@ -1151,6 +1156,9 @@
       <th>No registrados</th>
       <th>Nulos</th>
       <th>Total votos</th>
+      <th>IDH</th>
+      <th>Población</th>
+      <th>municipio</th>
     </tr>
   </thead>
   <tbody>
@@ -1205,21 +1213,23 @@ d3.json("datos_full.js", function(error, json){
     var row  = document.createElement("tr"); 
     var html = "<tr>" +
               "<td>" + city.municipio + "</td>" +//
-              "<td>" + format(count(city.data, "pan")) + "("+ (count(city.data, "pan")*100/count(city.data, "total_votos")).toLocaleString() +"%" + ")" + "</td>" +//
-              "<td>" + format(count(city.data, "pri")) + "("+  (count(city.data, "pri")*100/count(city.data, "total_votos")).toLocaleString() +"%" +")" + "</td>" +//<th>PRI</th>
-              "<td>" + format(count(city.data, "prd")) + "("+  (count(city.data, "prd")*100/count(city.data, "total_votos")).toLocaleString() +"%" +")" + "</td>" +//<th>PRD</th>
-              "<td>" + format(count(city.data, "pvem")) + "("+  (count(city.data, "pvem")*100/count(city.data, "total_votos")).toLocaleString() +"%" +")" + "</td>" +//<th>PVEM</th>
-              "<td>" + format(count(city.data, "pt")) + "("+  (count(city.data, "pt")*100/count(city.data, "total_votos")).toLocaleString() +"%" +")" + "</td>" +//<th>PT</th>
-              "<td>" + format(count(city.data, "movimiento_ciudadano")) + "("+  (count(city.data, "movimiento_ciudadano")*100/count(city.data, "total_votos")).toLocaleString() +"%" +")" + "</td>" +//<th>Movimiento Ciudadano</th>
-              "<td>" + format(count(city.data, "nueva_alianza")) + "("+  (count(city.data, "nueva_alianza")*100/count(city.data, "total_votos")).toLocaleString() +"%" +")" + "</td>" +//<th>format(count(city.data, "pan"))AL</th>
-              "<td>" + format(count(city.data, "morena")) + "("+  (count(city.data, "morena")*100/count(city.data, "total_votos")).toLocaleString() +"%" +")" + "</td>" +//<th>Morena</th>
-              "<td>" + format(count(city.data, "partido_humanista")) + "("+  (count(city.data, "partido_humanista")*100/count(city.data, "total_votos")).toLocaleString() +"%" +")" + "</td>" +//<th>Humanista</th>
-              "<td>" + format(count(city.data, "ps")) + "("+  (count(city.data, "ps")*100/count(city.data, "total_votos")).toLocaleString() +"%" +")" + "</td>" +//<th>PS</th>
-              "<td>" + format(count(city.data, "c_pri_pvem")) + "("+  (count(city.data, "c_pri_pvem")*100/count(city.data, "total_votos")).toLocaleString() +"%" +")" + "</td>" +//<th>PRI-PVEM</th>
-   
-              "<td>" + format(count(city.data, "no_registrados")) + "("+  (count(city.data, "no_registrados")*100/count(city.data, "total_votos")).toLocaleString() +"%" +")" + "</td>" +//<th>No registrados</th>
-              "<td>" + format(count(city.data, "nulos")) + "("+  (count(city.data, "nulos")*100/count(city.data, "total_votos")).toLocaleString() +"%" +")" + "</td>" +//<th>Nulos</th>
-              "<td>" + format(count(city.data, "total_votos")) + "</td>";//<th>Total votos</th>
+              "<td>" + format(count(city.data, "pan")) + "("+ (count(city.data, "pan")*100/count(city.data, "total_votos")).toLocaleString() +"%" + ")" + "</td>" +
+              "<td>" + format(count(city.data, "pri")) + "("+  (count(city.data, "pri")*100/count(city.data, "total_votos")).toLocaleString() +"%" +")" + "</td>" +
+              "<td>" + format(count(city.data, "prd")) + "("+  (count(city.data, "prd")*100/count(city.data, "total_votos")).toLocaleString() +"%" +")" + "</td>" +
+              "<td>" + format(count(city.data, "pvem")) + "("+  (count(city.data, "pvem")*100/count(city.data, "total_votos")).toLocaleString() +"%" +")" + "</td>" +
+              "<td>" + format(count(city.data, "pt")) + "("+  (count(city.data, "pt")*100/count(city.data, "total_votos")).toLocaleString() +"%" +")" + "</td>" +
+              "<td>" + format(count(city.data, "movimiento_ciudadano")) + "("+  (count(city.data, "movimiento_ciudadano")*100/count(city.data, "total_votos")).toLocaleString() +"%" +")" + "</td>" +
+              "<td>" + format(count(city.data, "nueva_alianza")) + "("+  (count(city.data, "nueva_alianza")*100/count(city.data, "total_votos")).toLocaleString() +"%" +")" + "</td>" +
+              "<td>" + format(count(city.data, "morena")) + "("+  (count(city.data, "morena")*100/count(city.data, "total_votos")).toLocaleString() +"%" +")" + "</td>" +
+              "<td>" + format(count(city.data, "partido_humanista")) + "("+  (count(city.data, "partido_humanista")*100/count(city.data, "total_votos")).toLocaleString() +"%" +")" + "</td>" +
+              "<td>" + format(count(city.data, "ps")) + "("+  (count(city.data, "ps")*100/count(city.data, "total_votos")).toLocaleString() +"%" +")" + "</td>" +
+              "<td>" + format(count(city.data, "c_pri_pvem")) + "("+  (count(city.data, "c_pri_pvem")*100/count(city.data, "total_votos")).toLocaleString() +"%" +")" + "</td>" +
+              "<td>" + format(count(city.data, "no_registrados")) + "("+  (count(city.data, "no_registrados")*100/count(city.data, "total_votos")).toLocaleString() +"%" +")" + "</td>" +
+              "<td>" + format(count(city.data, "nulos")) + "("+  (count(city.data, "nulos")*100/count(city.data, "total_votos")).toLocaleString() +"%" +")" + "</td>" +
+              "<td>" + format(count(city.data, "total_votos")) + "</td>" +
+              "<td>" + city.idh.toLocaleString() + "</td>" +
+              "<td>" + city.poblacion.toLocaleString() + "</td>" +
+              "<td>" + city.municipio + "</td>";
     row.innerHTML = html;
     tbody.appendChild(row);
   });
